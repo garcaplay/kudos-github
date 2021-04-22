@@ -5,21 +5,61 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
     <title>GitHub Kudos</title>
 </head>
 
 <body>
+    <div id="toast" class="hidden">
+        <div id="toast-info">
+            <p>Unexpected error</p>
+        </div>
+        <div id="toast-action">
+            <button type="button" id="toast-btn" aria-label="Close toast" onclick="window.closeToast()">X</button>
+        </div>
+    </div>
     <div id="search">
         <form id="search-form">
             <label id="search-label">¿A qué usuario de GitHub quieres encontrar?</label>
-            <input type="text" id="search-input" name="search-input">
+            <input type="text" id="search-input" name="search-input" maxlength="39">
             <button type="button" id="search-btn" onclick="window.myFunc()">Buscar</button>
         </form>
     </div>
 
     <script>
         function myFunc() {
-            const inputTextRaw = document.getElementById('search-input').value;
+            const inputText = document.getElementById('search-input').value;
+            // we check if the user entered passes the GitHub username validator
+            const inputTextMatch = inputText.match(/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i);
+            if (inputTextMatch) {
+                fetch(`https://api.github.com/users/${inputText}`).then((res) => res.json()).then((response) => {
+                    console.log('res', response);
+                })
+            } else {
+                // remove hidden property from toast, add error styles and change default text
+                const toastElement = document.getElementById('toast');
+                const toastInfoElement = toastElement.querySelector('#toast-info');
+
+                toastElement.classList.add('error');
+                toastInfoElement.innerHTML = `<p>The username entered does not comply with GitHub's composition rules:</p>
+                <ul>
+                    <li>Github username may only contain alphanumeric characters or hyphens.</li>
+                    <li>Github username cannot have multiple consecutive hyphens.</li>
+                    <li>Github username cannot begin or end with a hyphen.</li>
+                </ul>`
+                toastElement.classList.remove('hidden');
+            }
+        }
+
+        function closeToast() {
+            const toastElement = document.getElementById('toast');
+            const toastInfoElement = toastElement.querySelector('#toast-info');
+
+            toastElement.classList.add('hidden');
+            if (toastElement.classList.contains('error')) {
+                toastElement.classList.remove('error');
+            }
+            toastInfoElement.innerHTML = `<p> Unexpected error </p>`
         }
     </script>
 </body>

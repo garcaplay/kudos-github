@@ -1,0 +1,50 @@
+body {
+    background-color: white;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.hidden {
+    display: none!important;
+}
+
+#toast {
+    position: sticky;
+    top: 0;
+    background-color: goldenrod;
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 30px;
+}
+
+#toast-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#toast-info p {
+    margin: 0;
+}
+
+#toast.error {
+    background-color: brown;
+    color: white;
+}
+
+#toast-action {
+    align-self: flex-start;
+}
+
+#toast-action button {
+    background-color: transparent;
+    border: 0;
+    color: inherit
+}
+
+#toast-action button:hover {
+    cursor: pointer;
+}
