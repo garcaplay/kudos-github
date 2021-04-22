@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Kudos</title>
+</head>
+
+<body>
+    <div id="search">
+        <form id="search-form">
+            <label id="search-label">¿A qué usuario de GitHub quieres encontrar?</label>
+            <input type="text" id="search-input" name="search-input">
+            <button type="button" id="search-btn" onclick="window.myFunc()">Buscar</button>
+        </form>
+    </div>
+
+    <script>
+        function myFunc() {
+            const inputTextRaw = document.getElementById('search-input').value;
+        }
+    </script>
+</body>
+
+</html>
