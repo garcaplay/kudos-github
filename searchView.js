@@ -9,7 +9,7 @@ async function searchUser() {
             if (response.message === "Not Found") {
                 return {
                     error: true,
-                    message: "No user could be found with the given name"
+                    message: "No user was found with that name"
                 }
             } else {
                 return {

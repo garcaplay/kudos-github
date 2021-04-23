@@ -18,18 +18,26 @@
             <button type="button" id="toast-btn" aria-label="Close toast" onclick="window.closeToast()">X</button>
         </div>
     </div>
-    <div id="search">
-        <form id="search-form">
-            <label id="search-label">¿A qué usuario de GitHub quieres encontrar?</label>
-            <input type="text" id="search-input" name="search-input" maxlength="39">
-            <button type="button" id="search-btn" aria-label="Search user" onclick="window.searchUser()">Buscar</button>
-        </form>
-        <div id="search-result">
+    <main id="app">
+        <div id="search">
+            <form id="search-form">
+                <label id="search-label">¿Qué usuario de GitHub buscas?</label>
+                <input type="text" id="search-input" name="search-input" maxlength="39">
+                <button type="button" id="search-btn" aria-label="Search user" onclick="window.searchUser()">Buscar</button>
+            </form>
+            <div id="search-result">
 
+            </div>
         </div>
-    </div>
-    <div id="suggestions" class="hidden"></div>
-
+        <div id="suggestions" class="hidden"></div>
+        <!-- Second component -->
+        <!-- <div id="editor">
+            <form id="edit-form">
+                <label id="edit-text-label" class="edit-label">¡Personaliza el texto de tu kudo!</label>
+                <input type="text" id="edit-text-input" class="edit-input" name="edit-text-input" maxlength="140" onkeyup="window.editKudoText()">
+            </form>
+        </div> -->
+    </main>
     <script type="text/javascript" src="./searchView.js"></script>
     <script type="text/javascript">
         // want this as a global variable to use it in diff parts of the platform
