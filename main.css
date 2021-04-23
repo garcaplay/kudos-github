@@ -8,9 +8,12 @@
     --warning: #FFE66D;
 }
 
+html {
+    box-sizing: border-box;
+}
+
 body {
     background-color: var(--light);
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
     color: var(--dark);
@@ -84,7 +87,7 @@ body {
 }
 
 #search-result {
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 #search-result .user-card {
@@ -100,25 +103,43 @@ body {
     display: flex;
     width: 100%;
     justify-content: space-evenly;
-    position: relative;
+    align-items: flex-end;
 }
 
 #app form label {
-    position: absolute;
-    transform: translateY(-24px);
+    transform: translate(10px, -10px);
 }
 
 #app form input {
-    width: 74%;
     border: none;
     border-radius: 20px;
     padding: 12px 30px;
     box-shadow: 1px 1px 5px var(--dark);
+    box-sizing: border-box;
+}
+
+#app form input[type="color"] {
+    height: 40px;
+    width: 80px;
+    padding: 8px 18px;
+    background-color: var(--white);
+}
+
+#app form input[type="color"]:hover {
+    cursor: pointer;
 }
 
 #app form button {
     margin-left: 10px;
-    width: 26%;
+    height: fit-content;
+    width: fit-content;
+}
+
+#app form .form-separator {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 30px;
 }
 
 #app button {

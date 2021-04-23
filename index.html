@@ -19,26 +19,35 @@
         </div>
     </div>
     <main id="app">
-        <div id="search">
+        <!-- <div id="search">
             <form id="search-form">
-                <label id="search-label">¿Qué usuario de GitHub buscas?</label>
-                <input type="text" id="search-input" name="search-input" maxlength="39">
+                <div class="form-separator">
+                    <label id="search-label">¿Qué usuario de GitHub buscas?</label>
+                    <input type="text" id="search-input" name="search-input" maxlength="39">
+                </div>
                 <button type="button" id="search-btn" aria-label="Search user" onclick="window.searchUser()">Buscar</button>
             </form>
             <div id="search-result">
 
             </div>
         </div>
-        <div id="suggestions" class="hidden"></div>
+        <div id="suggestions" class="hidden"></div> -->
         <!-- Second component -->
-        <!-- <div id="editor">
+        <div id="editor">
             <form id="edit-form">
-                <label id="edit-text-label" class="edit-label">¡Personaliza el texto de tu kudo!</label>
-                <input type="text" id="edit-text-input" class="edit-input" name="edit-text-input" maxlength="140" onkeyup="window.editKudoText()">
+                <div class="form-separator">
+                    <label id="edit-text-label" class="edit-label">¡Personaliza el texto de tu kudo!</label>
+                    <input type="text" id="edit-text-input" class="edit-input" name="edit-text-input" maxlength="140" onkeyup="window.editKudoText(this)">
+                </div>
+                <div class="form-separator">
+                    <label id="edit-color-label" class="edit-label">¡Elige un color!</label>
+                    <input type="color" value="#FF6B6B" onchange="window.pickAColor(this)">
+                </div>
             </form>
-        </div> -->
+        </div>
     </main>
     <script type="text/javascript" src="./searchView.js"></script>
+    <script type="text/javascript" src="./editView.js"></script>
     <script type="text/javascript">
         // want this as a global variable to use it in diff parts of the platform
         var githubUserSearch = {};
