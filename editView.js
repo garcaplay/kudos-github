@@ -34,7 +34,7 @@ function createFirstView() {
         </div>
         <div class="form-separator">
             <label id="edit-color-label" class="edit-label">¡Elige un color!</label>
-            <input type="color" value="#FF6B6B" onchange="window.pickAColor(this)">
+            <input type="color" value="#1A535C" onchange="window.pickAColor(this)">
         </div>
     </form>
     <div id="edit-canvas">
