@@ -45,9 +45,9 @@ function showUserSearchResult() {
         resultElement.innerHTML = `<p>${githubUserSearch.message}</p>`
     } else {
         resultElement.innerHTML = `<div id="user-${githubUserSearch.id}-card" class="user-card">
-                <img class="user-card-avatar" src="${githubUserSearch.avatar}"" alt="${githubUserSearch.name}'s avatar">
+                <img class="user-card-avatar" src="${githubUserSearch.avatar}" alt="${githubUserSearch.name}'s avatar">
                 <p class="user-card-name">${githubUserSearch.name}</p>
-                <button type="button" id="user-kudo-btn">Crear Kudo!</button>
+                <button type="button" id="user-kudo-btn" onclick="window.loadEditView()">Crear Kudo!</button>
             </div>`
     }
 }
