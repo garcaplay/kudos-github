@@ -154,6 +154,15 @@ body {
     padding: 12px;
 }
 
+#app button.btn-icon {
+    background-color: transparent;
+}
+
+#app button.btn-icon img {
+    height: 30px;
+    background-color: var(--medium);
+}
+
 #editor {
     height: 100%;
 }
@@ -164,4 +173,8 @@ body {
     box-shadow: 1px 1px 15px var(--dark);
     border-radius: 20px;
     padding: 10px 20px;
+}
+
+#edit-header {
+    margin-bottom: 30px;
 }

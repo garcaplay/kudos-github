@@ -23,10 +23,21 @@ function loadEditView() {
     parentElement.appendChild(childElement);
 }
 
+function loadSearchView() {
+    const parentElement = document.getElementById('editor');
+    parentElement.classList.add('hidden');
+    parentElement.innerHTML = "";
+    const oldParentElement = document.getElementById('search');
+    oldParentElement.classList.remove('hidden');
+}
+
 function createFirstView() {
     const nodeElement = document.createElement('div');
     nodeElement.setAttribute('id', 'edit-view');
     nodeElement.innerHTML = `
+    <div id="edit-header">
+        <button onclick="window.loadSearchView()" title="Go to previous page" class="btn-icon"><span><img src="./utils/icons/back.svg" alt="Go to previous page"></span></button>
+    </div>
     <form id="edit-form">
         <div class="form-separator">
             <label id="edit-text-label" class="edit-label">¡Personaliza el texto de tu kudo!</label>
