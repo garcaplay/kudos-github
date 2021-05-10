@@ -19,27 +19,24 @@
         </div>
     </div>
     <main id="app">
-        <div id="search">
-            <form id="search-form">
-                <div class="form-separator">
-                    <label id="search-label">¿Qué usuario de GitHub buscas?</label>
-                    <input type="text" id="search-input" name="search-input" maxlength="39">
-                </div>
-                <button type="button" id="search-btn" aria-label="Search user" onclick="window.searchUser()">Buscar</button>
-            </form>
-            <div id="search-result">
-
-            </div>
-        </div>
-        <div id="suggestions" class="hidden"></div>
-        <!-- Second component -->
-        <div id="editor" class="hidden"></div>
     </main>
-    <script type="text/javascript" src="./searchView.js"></script>
-    <script type="text/javascript" src="./editView.js"></script>
+    <script type="module" src="./editView.js"></script>
+    <script type="module" src="./js/index.js">
+    </script>
     <script type="text/javascript">
         // want this as a global variable to use it in diff parts of the platform
         var githubUserSearch = {};
+
+        function closeToast() {
+            const toastElement = document.getElementById('toast');
+            const toastInfoElement = toastElement.querySelector('#toast-info');
+
+            toastElement.classList.add('hidden');
+            if (toastElement.classList.contains('error')) {
+                toastElement.classList.remove('error');
+            }
+            toastInfoElement.innerHTML = `<p> Unexpected error </p>`
+        }
     </script>
 </body>
 

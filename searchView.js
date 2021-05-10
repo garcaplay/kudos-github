@@ -1,6 +1,16 @@
+import { loadEditView } from './editView.js';
 "use strict";
 
-async function searchUser() {
+let githubUserSearch = window.githubUserSearch;
+
+//Listeners
+
+const searchButton = document.getElementById('search-btn');
+searchButton.addEventListener('click', searchUser);
+
+//Functionalities
+
+export async function searchUser() {
     const inputText = document.getElementById('search-input').value;
     // we check if the user entered passes the GitHub username validator
     const inputTextMatch = inputText.match(/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i);
@@ -47,18 +57,7 @@ function showUserSearchResult() {
         resultElement.innerHTML = `<div id="user-${githubUserSearch.id}-card" class="user-card">
                 <img class="user-card-avatar" src="${githubUserSearch.avatar}" alt="${githubUserSearch.name}'s avatar">
                 <p class="user-card-name">${githubUserSearch.name}</p>
-                <button type="button" id="user-kudo-btn" onclick="window.loadEditView()">Crear Kudo!</button>
+                <button type="button" id="user-kudo-btn" onclick=${loadEditView()}>Crear Kudo!</button>
             </div>`
     }
-}
-
-function closeToast() {
-    const toastElement = document.getElementById('toast');
-    const toastInfoElement = toastElement.querySelector('#toast-info');
-
-    toastElement.classList.add('hidden');
-    if (toastElement.classList.contains('error')) {
-        toastElement.classList.remove('error');
-    }
-    toastInfoElement.innerHTML = `<p> Unexpected error </p>`
 }
