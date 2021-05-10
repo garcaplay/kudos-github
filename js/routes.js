@@ -1,5 +1,3 @@
-import editTemplate from '../components/editView.js';
-
 export const PATHS = {
     search: {
         path: "/",

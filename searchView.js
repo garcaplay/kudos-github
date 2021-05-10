@@ -1,4 +1,4 @@
-import { loadEditView } from './editView.js';
+import ROUTER from './js/index.js';
 "use strict";
 
 let githubUserSearch = window.githubUserSearch;
@@ -60,4 +60,8 @@ function showUserSearchResult() {
                 <button type="button" id="user-kudo-btn" onclick=${loadEditView()}>Crear Kudo!</button>
             </div>`
     }
+}
+
+function loadEditView() {
+    ROUTER.load('edit');
 }

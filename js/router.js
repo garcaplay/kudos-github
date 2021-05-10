@@ -10,9 +10,9 @@ class Router {
         this.load(URL);
     }
 
-    async load(page = "search") {
+    load(page = "search") {
         const { paths } = this;
-        const { path, template } = paths[page] || paths.error;
+        const { path } = paths[page] || paths.error;
         const $CONTAINER = document.querySelector("#app");
 
         const request = new XMLHttpRequest();
