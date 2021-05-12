@@ -1,5 +1,5 @@
 <div id="edit-header">
-    <button onclick="window.loadSearchView()" title="Go to previous page" class="btn-icon"><span><img src="./utils/icons/back.svg" alt="Go to previous page"></span></button>
+    <button id="edit-back-btn" title="Go to previous page" class="btn-icon"><span>Go Back Icon</span></button>
 </div>
 <form id="edit-form">
     <div class="form-separator">
@@ -8,7 +8,7 @@
     </div>
     <div class="form-separator">
         <label id="edit-color-label" class="edit-label">¡Elige un color!</label>
-        <input type="color" value="#1A535C" onchange="window.pickAColor(this)">
+        <input id="edit-color-picker" type="color" value="#1A535C">
     </div>
 </form>
 <div id="edit-canvas">

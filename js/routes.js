@@ -4,9 +4,6 @@ export const PATHS = {
     },
     edit: {
         path: "/edit",
-    },
-    contact: {
-        path: "/contact",
     }
 }
 export default PATHS;

@@ -1,7 +1,7 @@
 import ROUTER from './js/index.js';
 "use strict";
 
-let githubUserSearch = window.githubUserSearch;
+let { githubUserSearch } = window;
 
 //Listeners
 
@@ -11,6 +11,7 @@ searchButton.addEventListener('click', searchUser);
 //Functionalities
 
 export async function searchUser() {
+
     const inputText = document.getElementById('search-input').value;
     // we check if the user entered passes the GitHub username validator
     const inputTextMatch = inputText.match(/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i);
@@ -33,6 +34,7 @@ export async function searchUser() {
             }
 
         });
+        window.githubUserSearch = githubUserSearch;
         showUserSearchResult();
     } else {
         const toastElement = document.getElementById('toast');
@@ -57,8 +59,10 @@ function showUserSearchResult() {
         resultElement.innerHTML = `<div id="user-${githubUserSearch.id}-card" class="user-card">
                 <img class="user-card-avatar" src="${githubUserSearch.avatar}" alt="${githubUserSearch.name}'s avatar">
                 <p class="user-card-name">${githubUserSearch.name}</p>
-                <button type="button" id="user-kudo-btn" onclick=${loadEditView()}>Crear Kudo!</button>
-            </div>`
+                <button type="button" id="user-kudo-btn">Crear Kudo!</button>
+            </div>`;
+
+        document.getElementById('user-kudo-btn').addEventListener('click', loadEditView);
     }
 }
 
