@@ -12,7 +12,6 @@ document.getElementById('edit-color-picker').addEventListener("change", (e) => p
 //add the github user's data
 addUserAvatar();
 
-
 // FUNCTIONALITIES
 
 function pickAColor(e) {
