@@ -1,28 +1,25 @@
+import { searchInit } from "../searchView.js";
+
 class Router {
     constructor(paths) {
         this.paths = paths;
         this.initRouter();
     }
 
-    initRouter() {
+    async initRouter() {
         const { location: { pathname = "/" } } = window;
         const URL = pathname === "/" ? "search" : pathname.replace("/", "");
         this.load(URL);
     }
 
-    load(page = "search") {
-        const { paths } = this;
-        const { path } = paths[page] || paths.error;
-        const $CONTAINER = document.querySelector("#app");
+
+    async load(page = "search", pageInit = searchInit) {
+        const CONTAINER = document.querySelector("#app");
 
         const request = new XMLHttpRequest();
         request.onload = () => {
-            $CONTAINER.innerHTML = request.responseText;
-            const newScript = document.createElement('script');
-            newScript.setAttribute('src', `./${page}View.js`);
-            newScript.setAttribute('type', 'module');
-            document.body.appendChild(newScript);
-            window.history.pushState({}, "done", path);
+            CONTAINER.innerHTML = request.responseText;
+            pageInit();
         };
         request.open("GET", `./components/${page}View.html`, true);
         request.send();
