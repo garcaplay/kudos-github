@@ -45,11 +45,11 @@ export const searchInit = () => {
 
             toastElement.classList.add('error');
             toastInfoElement.innerHTML = `<p>The username entered does not comply with GitHub's composition rules:</p>
-        <ul>
-            <li>Github username may only contain alphanumeric characters or hyphens.</li>
-            <li>Github username cannot have multiple consecutive hyphens.</li>
-            <li>Github username cannot begin or end with a hyphen.</li>
-        </ul>`
+            <ul>
+                <li>Github username may only contain alphanumeric characters or hyphens.</li>
+                <li>Github username cannot have multiple consecutive hyphens.</li>
+                <li>Github username cannot begin or end with a hyphen.</li>
+            </ul>`;
             toastElement.classList.remove('hidden');
         }
     }

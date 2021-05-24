@@ -32,7 +32,7 @@ export const editInit = () => {
         img.alt = `${githubUserSearch.name}'s avatar`;
 
         const canvasCtxt = document.getElementById('edit-canvas').getContext('2d');
-        canvasCtxt.drawImage(img, 0, 0, 100, 100, 0, 0, 100, 100);
+        canvasCtxt.drawImage(img, 0, 0, img.width, img.height, 0, 0, 100, 100);
     }
 
     function loadSearchView() {
