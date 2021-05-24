@@ -17,13 +17,16 @@ export const editInit = () => {
     // FUNCTIONALITIES
 
     function pickAColor(e) {
-        const canvas = document.getElementById('edit-canvas');
-        canvas.querySelector('p').style.color = e.currentTarget.value;
+        const canvasCtxt = document.getElementById('edit-canvas').getContext('2d');
+        //not working
+        canvasCtxt.fillStyle = e.currentTarget.value;
     }
 
     function editKudoText(e) {
-        const canvas = document.getElementById('edit-canvas');
-        canvas.querySelector('p').innerHTML = `${e.currentTarget.value}`;
+        const canvasCtxt = document.getElementById('edit-canvas').getContext('2d');
+        canvasCtxt.font = "16px Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"
+        canvasCtxt.fillStyle = "#1A535C";
+        canvasCtxt.fillText(e.currentTarget.value, 0, 130);
     }
 
     function addUserAvatar() {
