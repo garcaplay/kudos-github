@@ -5,28 +5,38 @@ import { searchInit } from "../searchView.js";
 
 export const editInit = () => {
     let githubUserSearch = window.githubUserSearch;
-    //LISTENERS
 
-    document.getElementById('edit-text-input').addEventListener("keyup", (e) => editKudoText(e));
+    //LISTENERS
+    document.getElementById('edit-text-input').addEventListener("keyup", editText);
     document.getElementById('edit-back-btn').addEventListener("click", (e) => loadSearchView(e));
-    document.getElementById('edit-color-picker').addEventListener("change", (e) => pickAColor(e));
+    document.getElementById('edit-color-picker').addEventListener("change", editText);
 
     //add the github user's data
     addUserAvatar();
 
     // FUNCTIONALITIES
 
-    function pickAColor(e) {
-        const canvasCtxt = document.getElementById('edit-canvas').getContext('2d');
-        //not working
-        canvasCtxt.fillStyle = e.currentTarget.value;
+    function editText() {
+        clearTextFromCanvas();
+        const textValue = document.getElementById('edit-text-input').value;
+        const colorValue = document.getElementById('edit-color-picker').value;
+        createCanvasText({ font: "16px sans-serif", color: colorValue }, textValue);
     }
 
-    function editKudoText(e) {
+    function createCanvasText(fontConfig, text) {
         const canvasCtxt = document.getElementById('edit-canvas').getContext('2d');
-        canvasCtxt.font = "16px Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"
-        canvasCtxt.fillStyle = "#1A535C";
-        canvasCtxt.fillText(e.currentTarget.value, 0, 130);
+        canvasCtxt.font = fontConfig.font;
+        canvasCtxt.fillStyle = fontConfig.color;
+        canvasCtxt.fillText(text, 0, 130);
+    }
+
+    function clearTextFromCanvas() {
+        const canvas = document.getElementById('edit-canvas');
+        const canvasCtxt = canvas.getContext('2d');
+        canvasCtxt.beginPath();
+        canvasCtxt.rect(0, 104, canvas.scrollWidth, canvas.scrollHeight);
+        canvasCtxt.fillStyle = "#fff";
+        canvasCtxt.fill();
     }
 
     function addUserAvatar() {
