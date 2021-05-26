@@ -45,6 +45,8 @@ export const editInit = () => {
         img.alt = `${githubUserSearch.name}'s avatar`;
 
         const canvasCtxt = document.getElementById('edit-canvas').getContext('2d');
+        canvasCtxt.arc(50, 50, 50, 0, Math.PI * 2, true);
+        canvasCtxt.clip();
         canvasCtxt.drawImage(img, 0, 0, img.width, img.height, 0, 0, 100, 100);
     }
 
