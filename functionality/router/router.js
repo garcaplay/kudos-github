@@ -7,8 +7,11 @@ class Router {
     }
 
     async initRouter() {
-        const { location: { pathname = "/" } } = window;
-        const url = pathname === "/" ? "search" : pathname.replace("kudos-github/", "");
+        let { location: { pathname = "/" } } = window;
+        if (pathname.includes("kudos-github/")) {
+            pathname = pathname.replace("kudos-github/", "")
+        }
+        const url = pathname === "/" ? "search" : pathname.replace("/", "");
         this.load(url);
     }
 
