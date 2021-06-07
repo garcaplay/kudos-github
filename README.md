@@ -22,8 +22,7 @@ I get it, someone just don´t want to download every repo of Github in order to 
 - [ ] Fix download kudos image functionality.
 
 **Save and retrieve changes**
-- [ ] Add logic to, given X time or every time the user changes something in the edit view, an object with the current configuration of the kudo (Github user data, text, color...) is saved in Local Storage.
-- [ ] Add functionality to convert that kudo configuration data in a token and store that in the Local Storage -so the data is not saved as plain text-.
+- [ ] Add functionality to convert that kudo configuration data stored in Local Storage in a token and store that instead in the Local Storage -so the data is not saved as plain text-.
 - [ ] Add logic to remove data from Local Storage when user downloads the image or clicks on the "go back" button. 
 - [ ] Add functionality on the search view in order to on first load, detect if there´s any information in the Local Storage from a previous session or not. 
     - [ ] If there is information in the Local Storage, show a modal to let the user know that they can retrieve the unfinished kudo. Modal buttons: cancel/close modal and continue to edit view.
