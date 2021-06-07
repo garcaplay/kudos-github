@@ -21,18 +21,19 @@ export const editInit = () => {
     addUserAvatar();
 
     // FUNCTIONALITIES
-
     function editText() {
         clearTextFromCanvas();
         const textValue = document.getElementById('edit-text-input').value;
         const colorValue = document.getElementById('edit-color-picker').value;
         createCanvasText({ font: "16px sans-serif", color: colorValue }, textValue);
+        saveProgress();
     }
 
     function createCanvasText(fontConfig, text) {
         canvasCtxt.font = fontConfig.font;
         canvasCtxt.fillStyle = fontConfig.color;
         canvasCtxt.fillText(text, 20, 140);
+        saveProgress();
     }
 
     function clearTextFromCanvas() {
@@ -57,6 +58,19 @@ export const editInit = () => {
     function downloadImage(e) {
         const imageToDownload = canvas.toDataURL("image/jpg");
         e.href = imageToDownload;
+    }
+
+    function saveProgress() {
+        const localStorage = window.localStorage;
+        const kudoConfig = {
+            avatar: githubUserSearch.avatar,
+            name: githubUserSearch.name,
+            text: document.getElementById('edit-text-input').value,
+            color: document.getElementById('edit-color-picker').value
+
+        };
+
+        localStorage.setItem('kudoInProgress', JSON.stringify(kudoConfig))
     }
 
 }
