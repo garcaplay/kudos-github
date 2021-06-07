@@ -172,7 +172,6 @@ body {
     background-color: white;
     box-shadow: 1px 1px 15px var(--dark);
     border-radius: 20px;
-    padding: 10px 20px;
 }
 
 #edit-header {

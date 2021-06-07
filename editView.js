@@ -5,11 +5,18 @@ import { searchInit } from "../searchView.js";
 
 export const editInit = () => {
     let githubUserSearch = window.githubUserSearch;
+    const canvas = document.getElementById("edit-canvas");
+    const canvasCtxt = canvas.getContext("2d");
 
     //LISTENERS
     document.getElementById('edit-text-input').addEventListener("keyup", editText);
     document.getElementById('edit-back-btn').addEventListener("click", (e) => loadSearchView(e));
     document.getElementById('edit-color-picker').addEventListener("change", editText);
+    document.getElementById('edit-download-btn').addEventListener("click", (e) => downloadImage(e));
+
+    //add background to canvas element
+    canvasCtxt.fillStyle = "white";
+    canvasCtxt.fillRect(0, 0, canvas.width, canvas.height);
 
     //add the github user's data
     addUserAvatar();
@@ -24,17 +31,14 @@ export const editInit = () => {
     }
 
     function createCanvasText(fontConfig, text) {
-        const canvasCtxt = document.getElementById('edit-canvas').getContext('2d');
         canvasCtxt.font = fontConfig.font;
         canvasCtxt.fillStyle = fontConfig.color;
-        canvasCtxt.fillText(text, 0, 130);
+        canvasCtxt.fillText(text, 20, 140);
     }
 
     function clearTextFromCanvas() {
-        const canvas = document.getElementById('edit-canvas');
-        const canvasCtxt = canvas.getContext('2d');
         canvasCtxt.beginPath();
-        canvasCtxt.rect(0, 104, canvas.scrollWidth, canvas.scrollHeight);
+        canvasCtxt.rect(20, 114, canvas.scrollWidth, canvas.scrollHeight);
         canvasCtxt.fillStyle = "#fff";
         canvasCtxt.fill();
     }
@@ -44,12 +48,16 @@ export const editInit = () => {
         img.src = githubUserSearch.avatar;
         img.alt = `${githubUserSearch.name}'s avatar`;
 
-        const canvasCtxt = document.getElementById('edit-canvas').getContext('2d');
-        canvasCtxt.drawImage(img, 0, 0, img.width, img.height, 0, 0, 100, 100);
+        canvasCtxt.drawImage(img, 20, 10, img.width, img.height, 20, 10, 100, 100);
     }
 
     function loadSearchView() {
         ROUTER.load('search', searchInit);
+    }
+
+    function downloadImage(e) {
+        const imageToDownload = canvas.toDataURL("image/jpg");
+        e.href = imageToDownload;
     }
 
 }
