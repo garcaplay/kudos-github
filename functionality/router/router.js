@@ -17,11 +17,10 @@ class Router {
         const request = new XMLHttpRequest();
 
         request.onload = () => {
-            console.log('req', request);
             container.innerHTML = request.responseText;
             pageInit();
         };
-        request.open("GET", `./components/${page}View.html`, true);
+        request.open("GET", `../../components/${page}View.html`, true);
         request.send();
 
     }
