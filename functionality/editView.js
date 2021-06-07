@@ -1,6 +1,5 @@
-import ROUTER from './js/index.js';
-import { searchInit } from "../searchView.js";
-
+import ROUTER from './router/index.js';
+import { searchInit } from "./searchView.js";
 "use strict";
 
 export const editInit = () => {

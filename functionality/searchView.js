@@ -1,4 +1,4 @@
-import ROUTER from './js/index.js';
+import ROUTER from './functionality/index.js';
 import { editInit } from "../editView.js";
 "use strict";
 
