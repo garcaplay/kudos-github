@@ -1,4 +1,4 @@
-export const PATHS = {
+export const paths = {
     search: {
         path: "/",
     },
@@ -6,4 +6,4 @@ export const PATHS = {
         path: "/edit",
     }
 }
-export default PATHS;
+export default paths;

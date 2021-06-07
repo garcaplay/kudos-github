@@ -1,11 +1,13 @@
-import ROUTER from './router/index.js';
+import router from './router/index.js';
 import { searchInit } from "./searchView.js";
 "use strict";
 
+let canvas;
+let canvasCtxt;
+
 export const editInit = () => {
-    let githubUserSearch = window.githubUserSearch;
-    const canvas = document.getElementById("edit-canvas");
-    const canvasCtxt = canvas.getContext("2d");
+    canvas = document.getElementById("edit-canvas");
+    canvasCtxt = canvas.getContext("2d");
 
     //LISTENERS
     document.getElementById('edit-text-input').addEventListener("keyup", editText);
@@ -19,60 +21,58 @@ export const editInit = () => {
 
     //add the github user's data
     addUserAvatar();
+}
 
-    // FUNCTIONALITIES
-    function editText() {
-        clearTextFromCanvas();
-        const textValue = document.getElementById('edit-text-input').value;
-        const colorValue = document.getElementById('edit-color-picker').value;
-        createCanvasText({ font: "16px sans-serif", color: colorValue }, textValue);
-        saveProgress();
-    }
+function editText() {
+    clearTextFromCanvas();
+    const textValue = document.getElementById('edit-text-input').value;
+    const colorValue = document.getElementById('edit-color-picker').value;
+    createCanvasText({ font: "16px sans-serif", color: colorValue }, textValue);
+    saveProgress();
+}
 
-    function createCanvasText(fontConfig, text) {
-        canvasCtxt.font = fontConfig.font;
-        canvasCtxt.fillStyle = fontConfig.color;
-        canvasCtxt.fillText(text, 20, 140);
-        saveProgress();
-    }
+function createCanvasText(fontConfig, text) {
+    canvasCtxt.font = fontConfig.font;
+    canvasCtxt.fillStyle = fontConfig.color;
+    canvasCtxt.fillText(text, 20, 140);
+    saveProgress();
+}
 
-    function clearTextFromCanvas() {
-        canvasCtxt.beginPath();
-        canvasCtxt.rect(20, 114, canvas.scrollWidth, canvas.scrollHeight);
-        canvasCtxt.fillStyle = "#fff";
-        canvasCtxt.fill();
-    }
+function clearTextFromCanvas() {
+    canvasCtxt.beginPath();
+    canvasCtxt.rect(20, 114, canvas.scrollWidth, canvas.scrollHeight);
+    canvasCtxt.fillStyle = "#fff";
+    canvasCtxt.fill();
+}
 
-    function addUserAvatar() {
-        const img = new Image();
-        img.src = githubUserSearch.avatar;
-        img.alt = `${githubUserSearch.name}'s avatar`;
+function addUserAvatar() {
+    const img = new Image();
+    img.src = githubUserSearch.avatar;
+    img.alt = `${githubUserSearch.name}'s avatar`;
 
-        canvasCtxt.drawImage(img, 20, 10, img.width, img.height, 20, 10, 100, 100);
-    }
+    canvasCtxt.drawImage(img, 20, 10, img.width, img.height, 20, 10, 100, 100);
+}
 
-    function loadSearchView() {
-        ROUTER.load('search', searchInit);
-    }
+function loadSearchView() {
+    router.load('search', searchInit);
+}
 
-    function downloadImage(e) {
-        const imageToDownload = canvas.toDataURL("image/jpg");
-        e.href = imageToDownload;
-    }
+function downloadImage(e) {
+    const imageToDownload = canvas.toDataURL("image/jpg");
+    e.href = imageToDownload;
+}
 
-    function saveProgress() {
-        const localStorage = window.localStorage;
-        const kudoConfig = {
-            avatar: githubUserSearch.avatar,
-            name: githubUserSearch.name,
-            text: document.getElementById('edit-text-input').value,
-            color: document.getElementById('edit-color-picker').value
+function saveProgress() {
+    const localStorage = window.localStorage;
+    const kudoConfig = {
+        avatar: githubUserSearch.avatar,
+        name: githubUserSearch.name,
+        text: document.getElementById('edit-text-input').value,
+        color: document.getElementById('edit-color-picker').value
 
-        };
+    };
 
-        localStorage.setItem('kudoInProgress', JSON.stringify(kudoConfig))
-    }
-
+    localStorage.setItem('kudoInProgress', JSON.stringify(kudoConfig))
 }
 
 export default editInit;

@@ -8,17 +8,16 @@ class Router {
 
     async initRouter() {
         const { location: { pathname = "/" } } = window;
-        const URL = pathname === "/" ? "search" : pathname.replace("/", "");
-        this.load(URL);
+        const url = pathname === "/" ? "search" : pathname.replace("/", "");
+        this.load(url);
     }
 
-
     async load(page = "search", pageInit = searchInit) {
-        const CONTAINER = document.querySelector("#app");
-
+        const container = document.querySelector("#app");
         const request = new XMLHttpRequest();
+
         request.onload = () => {
-            CONTAINER.innerHTML = request.responseText;
+            container.innerHTML = request.responseText;
             pageInit();
         };
         request.open("GET", `./components/${page}View.html`, true);

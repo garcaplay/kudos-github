@@ -1,4 +1,4 @@
-import PATHS from './routes.js';
+import paths from './routes.js';
 import Router from './router.js';
-export const ROUTER = new Router(PATHS);
-export default ROUTER;
+export const router = new Router(paths);
+export default router;
