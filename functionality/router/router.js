@@ -17,6 +17,7 @@ class Router {
         const request = new XMLHttpRequest();
 
         request.onload = () => {
+            console.log('req', request);
             container.innerHTML = request.responseText;
             pageInit();
         };
