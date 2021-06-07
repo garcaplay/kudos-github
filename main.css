@@ -70,6 +70,7 @@ body {
 }
 
 #app button:hover,
+#app a:hover,
 #toast button:hover {
     cursor: pointer;
 }
@@ -88,6 +89,10 @@ body {
 
 #search {
     padding-top: 30px;
+}
+
+#search-btn {
+    margin-bottom: 28px;
 }
 
 #search-result {
@@ -146,7 +151,8 @@ body {
     margin-bottom: 30px;
 }
 
-#app button {
+#app button,
+#app a {
     border: none;
     color: var(--dark);
     background-color: var(--medium);
@@ -191,4 +197,11 @@ body {
     left: 0;
     bottom: 0;
     right: 0;
+}
+
+#edit-download-btn {
+    margin-bottom: 20px;
+    position: absolute;
+    bottom: 0px;
+    right: 20px;
 }
